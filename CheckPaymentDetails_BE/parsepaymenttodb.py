@@ -35,7 +35,7 @@ def parse_payment_to_database(table, acc_nums, address):
         mysql_cur.execute(f'select * from {db_name}.account;')
         acc_infos_in_db = mysql_cur.fetchall()
 
-        mysql_cur.execute(f'select bank_id from my_payment.bank where phone_num={address};')
+        mysql_cur.execute(f'select bank_id from {db_name}.bank where phone_num={address};')
         _bank_id = mysql_cur.fetchone()
         _bank_id = _bank_id[0]
 
