@@ -28,7 +28,7 @@ def set_account_table(acc_nums, acc_infos_in_db):
     return acc_result
 
 def parse_payment_to_database(table, acc_nums, address):
-    mysql_conn = pymysql.connect(host='localhost', user='kmlee', password='ks110k1@', db=db_name)
+    mysql_conn = pymysql.connect(host=os.getenv('DB_HOST'), user=os.getenv('DB_USER'), password=os.getenv('DB_PASSWORD'), db=db_name)
     mysql_cur = mysql_conn.cursor()
 
     try:
