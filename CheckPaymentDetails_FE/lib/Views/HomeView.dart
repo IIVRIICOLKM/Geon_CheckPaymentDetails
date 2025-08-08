@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:payment_app/Widgets/appFrame.dart';
+import 'package:payment_app/Widgets/statefulView.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget{
   HomeView(){}
+
+  PaymentInformation paymentInformation = PaymentInformation();
 
   Widget build(BuildContext context){
     double screenWidth = MediaQuery.of(context).size.width;
@@ -32,9 +36,10 @@ class HomeView extends StatelessWidget{
                               height: screenHeight - 310,
                               width: screenWidth - 70,
                               decoration: BoxDecoration(
-                                color: Colors.cyanAccent,
-                                borderRadius: BorderRadius.circular(20)
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.cyanAccent
                               ),
+                              child: paymentInformation
                             )
                           ),
                           Positioned(
@@ -63,9 +68,6 @@ class Bank{
   bool isExpanded;
 }
 
-// 임시 하드코딩 은행 정보
-List<Bank> temp = [Bank(headerValue: '은행')];
-
 class BankAccordion extends StatefulWidget {
   const BankAccordion({super.key});
 
@@ -76,6 +78,11 @@ class BankAccordion extends StatefulWidget {
 /// MyStatefulWidget의 개인 상태 클래스입니다.
 /// SingleChildScrollView로 ExpansionPanelList를 감쌉니다.
 class _BankAccordion extends State<BankAccordion> {
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +100,10 @@ class _BankAccordion extends State<BankAccordion> {
           for(int i = 0; i < 5; i++)
             Container(
               width: 120,
-              child: FilledButton(onPressed: (){},
+              child: FilledButton(
+                  onPressed: (){
+
+                  },
                   child: Text('버튼 $i', style: TextStyle(color: Colors.black)),
                   style: FilledButton.styleFrom(
                     backgroundColor: Colors.grey[100]
@@ -105,34 +115,3 @@ class _BankAccordion extends State<BankAccordion> {
     );
   }
 }
-
-// Container(
-//   height: screenHeight - 310,
-//   decoration: BoxDecoration(
-//     color: Colors.cyanAccent,
-//     borderRadius: BorderRadius.circular(20)
-//   ),
-//   child: Column(
-//     mainAxisAlignment: MainAxisAlignment.start,
-//     children: <Widget>[
-//       Flexible(
-//         flex: 3,
-//         child: Container(
-//           decoration: BoxDecoration(
-//             color: Colors.cyanAccent,
-//             borderRadius: BorderRadius.circular(20)
-//           ),
-//         ),
-//       ),
-//       Flexible(
-//         flex: 1,
-//         child: Container(
-//           decoration: BoxDecoration(
-//               color: Colors.cyanAccent,
-//               borderRadius: BorderRadius.circular(20)
-//           ),
-//         )
-//       ),
-//     ],
-//   )
-// )

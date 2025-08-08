@@ -7,9 +7,6 @@ class mainAppBar extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Container(
         height: 56,
         child: Scaffold(
